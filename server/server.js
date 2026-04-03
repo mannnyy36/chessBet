@@ -1,17 +1,26 @@
 import express from 'express';
 import db from './db.js';
+import register from './routes/register.js';
+import login from './routes/login.js';
+import cors from 'cors';
 
 const app = express()
-const PORT = 3000;
+const PORT = 8000;
 
+app.use(cors())
+
+app.use(express.json())
+
+app.use('/register', register)
+app.use('/login', login)
 
 app.get('/', async (req, res) => {
     try {
-        const result = await db('SELECT * FROM user');
+        const result = await db('SELECT * FROM users');
         res.json(result.rows);
     } catch (err){
         console.log(err);
-        res.status(500).send('Inter Server Error');
+        res.status(500).send('Internal Server Error');
     }
 });
 
