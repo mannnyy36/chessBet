@@ -2,6 +2,7 @@ import express from 'express';
 import db from './db.js';
 import register from './routes/register.js';
 import login from './routes/login.js';
+import profile from './routes/profile.js';
 import cors from 'cors';
 
 const app = express()
@@ -13,6 +14,7 @@ app.use(express.json())
 
 app.use('/register', register)
 app.use('/login', login)
+app.use('/profile', profile)
 
 app.get('/', async (req, res) => {
     try {
