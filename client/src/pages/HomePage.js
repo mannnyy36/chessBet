@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import './HomePage.css';
+import { Link } from "react-router-dom";
 
 function HomePage() {
     const [tournaments, setTournaments] = useState([])
@@ -31,7 +32,7 @@ function HomePage() {
         .sort((a, b) => a.round.startsAt - b.round.startsAt)
 
     const TournamentCard = ({ t }) => (
-        <div className="card" key={t.tour.id}>
+        <div className="card">
             {t.tour.image
                 ? <img className="card-img" src={t.tour.image} alt="" />
                 : <div className="card-img-placeholder" />
@@ -68,7 +69,9 @@ function HomePage() {
                     <div className="section-label">Live now</div>
                     <div className="grid">
                         {liveTournaments.map(t => (
-                            <TournamentCard key={t.tour.id} t={t} />
+                            <Link key={t.tour.id} to={`/tournament/${t.tour.id}`} style={{ textDecoration: 'none' }}>
+                                <TournamentCard t={t} />
+                            </Link>
                         ))}
                     </div>
                 </>
@@ -79,7 +82,9 @@ function HomePage() {
                     <div className="section-label" style={{ marginTop: '1.5rem' }}>Upcoming</div>
                     <div className="grid">
                         {upcomingTournaments.map(t => (
-                            <TournamentCard key={t.tour.id} t={t} />
+                            <Link key={t.tour.id} to={`/tournament/${t.tour.id}`} style={{ textDecoration: 'none' }}>
+                                <TournamentCard t={t} />
+                            </Link>
                         ))}
                     </div>
                 </>

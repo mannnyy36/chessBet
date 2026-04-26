@@ -4,6 +4,9 @@ import register from './routes/register.js';
 import login from './routes/login.js';
 import profile from './routes/profile.js';
 import tournaments from './routes/tournaments.js'
+import game from './routes/game.js'
+import rounds from './routes/rounds.js'
+import bets from './routes/bets.js'
 import cors from 'cors';
 
 const app = express()
@@ -17,6 +20,9 @@ app.use('/register', register)
 app.use('/login', login)
 app.use('/profile', profile)
 app.use('/tournaments', tournaments)
+app.use('/game', game)
+app.use('/round', rounds)
+app.use('/bets', bets)
 
 app.get('/', async (req, res) => {
     try {
