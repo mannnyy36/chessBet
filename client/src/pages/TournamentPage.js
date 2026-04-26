@@ -124,6 +124,8 @@ function TournamentPage() {
                                             key={game.id}
                                             game={game}
                                             roundId={round.id}
+                                            roundSlug={round.slug}
+                                            tourSlug={tournament.tour.slug}
                                             roundFinished={round.finished}
                                         />
                                     ))}
@@ -137,7 +139,7 @@ function TournamentPage() {
     )
 }
 
-function GameBetCard({ game, roundId, roundFinished }) {
+function GameBetCard({ game, roundId, roundSlug, tourSlug, roundFinished }) {
     const players = game.players || []
     const white = players[0]
     const black = players[1]
@@ -182,10 +184,8 @@ function GameBetCard({ game, roundId, roundFinished }) {
                 body: JSON.stringify({
                     game_id: game.id,
                     round_id: roundId,
-                    player: white.name,
-                    opponent: black.name,
-                    player_rating: white.rating,
-                    opponent_rating: black.rating,
+                    tour_slug: tourSlug,
+                    round_slug: roundSlug,
                     selection,
                     amount: numAmount,
                 }),

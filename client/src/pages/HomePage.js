@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import './HomePage.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HomePage() {
     const [tournaments, setTournaments] = useState([])
+    const [token, setToken] = useState(localStorage.getItem('token'))
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        setToken(null)
+        navigate('/home')
+    }
 
     useEffect(() => {
         const fetchTournaments = async () => {
@@ -54,13 +62,30 @@ function HomePage() {
     return (
         <div className="page">
             <div className="header">
-                <div className="logo">♟</div>
-                <span className="site-name">ChessBet</span>
+                <Link to="/home" className="brand">
+                    <div className="logo">♟</div>
+                    <span className="site-name">ChessBet</span>
+                </Link>
+                <div className="account">
+                    {token ? (
+                        <>
+                            <Link to="/profile" className="account-link">Profile</Link>
+                            <button type="button" className="account-link account-link-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className="account-link">Login</Link>
+                            <Link to="/register" className="account-link account-link-primary">Register</Link>
+                        </>
+                    )}
+                </div>
             </div>
 
             <nav className="nav">
                 <span className="nav-item active">Tournaments</span>
-                <span className="nav-item">My Bets</span>
+                <Link to="/my-bets" className="nav-item nav-link">My Bets</Link>
                 <span className="nav-item">Leaderboard</span>
             </nav>
 

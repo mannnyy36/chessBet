@@ -15,8 +15,55 @@
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     margin-bottom: 1.5rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 0.5px solid transparent;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    cursor: pointer;
+    font-family: inherit;
+    background: none;
+}
+
+.account-link:hover {
+    border-color: #e0e0e0;
+}
+
+.account-link-primary {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.account-link-primary:hover {
+    background: #333;
+    border-color: transparent;
+}
+
+.account-link-button {
+    color: #888;
 }
 
 .logo {
@@ -53,6 +100,11 @@
     padding-bottom: 4px;
     border-bottom: 1.5px solid transparent;
     transition: color 0.15s;
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #888;
 }
 
 .nav-item:hover {

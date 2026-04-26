@@ -1,0 +1,143 @@
+.bets-page {
+    padding: 1.5rem 1rem;
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.bets-back {
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.bets-back:hover {
+    color: #1a1a1a;
+}
+
+.bets-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.bets-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.bets-section-label:first-of-type {
+    margin-top: 0;
+}
+
+.bets-status {
+    font-size: 14px;
+    color: #888;
+    padding: 0.5rem 0;
+}
+
+.bets-error {
+    color: #A32D2D;
+}
+
+.bets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bet-row {
+    background: #fff;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.bet-row-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.bet-row-pairing {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bet-row-selection {
+    font-size: 13px;
+    color: #555;
+}
+
+.bet-row-meta {
+    font-size: 12px;
+    color: #888;
+}
+
+.bet-row-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.bet-status-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    letter-spacing: 0.02em;
+}
+
+.bet-status-pending {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.bet-status-won {
+    background: #ECF7EE;
+    color: #2D6A33;
+}
+
+.bet-status-lost {
+    background: #FCEBEB;
+    color: #A32D2D;
+}
+
+.bet-row-payout {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+    .bet-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bet-row-status {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 10px;
+    }
+}

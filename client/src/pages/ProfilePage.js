@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import './ProfilePage.css';
 
 function ProfilePage() {
-    const [userData, setUserData] = useState('')
+    const [userData, setUserData] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch('http://localhost:8000/profile', {
@@ -9,16 +12,37 @@ function ProfilePage() {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(res => res.json())    
-        .then(data => {setUserData(data)
-            console.log(data)
-        })    
+            .then(res => res.json())
+            .then(data => {
+                setUserData(data)
+                setLoading(false)
+            })
+            .catch(() => setLoading(false))
     }, [])
 
+    const username = userData?.userInfo?.username
+    const balance = userData?.userInfo?.balance
+    const initial = username ? username.charAt(0).toUpperCase() : '?'
+
     return (
-        <div>
-            <h1>{userData?.userInfo?.username}</h1>
-            <p>Balance: {userData?.userInfo?.balance}</p>
+        <div className="profile-page">
+            <Link to="/home" className="profile-back">← Back to tournaments</Link>
+
+            {loading ? (
+                <p className="profile-loading">Loading…</p>
+            ) : !username ? (
+                <p className="profile-loading">Could not load profile. Please <Link to="/login">log in</Link>.</p>
+            ) : (
+                <div className="profile-card">
+                    <div className="profile-avatar">{initial}</div>
+                    <div className="profile-username">{username}</div>
+
+                    <div className="profile-row">
+                        <span className="profile-row-label">Balance</span>
+                        <span className="profile-row-value">{balance}</span>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

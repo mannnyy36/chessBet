@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage.js';
 import HomePage from './pages/HomePage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import TournamentPage from './pages/TournamentPage.js';
+import MyBetsPage from './pages/MyBetsPage.js';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path="/tournament/:id" element={<TournamentPage />} />
+        <Route path="/my-bets" element={<MyBetsPage />} />
       </Routes>
     </BrowserRouter>
   )
