@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import './HomePage.css';
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from '../config.js';
 
 function HomePage() {
     const [tournaments, setTournaments] = useState([])
@@ -15,7 +16,7 @@ function HomePage() {
 
     useEffect(() => {
         const fetchTournaments = async () => {
-            const response = await fetch('http://localhost:8000/tournaments')
+            const response = await fetch(`${API_URL}/tournaments`)
             const data = await response.json()
             setTournaments(data)
         }

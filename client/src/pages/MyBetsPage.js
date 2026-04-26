@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './MyBetsPage.css';
+import { API_URL } from '../config.js';
 
 function MyBetsPage() {
     const [bets, setBets] = useState([])
@@ -15,7 +16,7 @@ function MyBetsPage() {
             return
         }
 
-        fetch('http://localhost:8000/bets', {
+        fetch(`${API_URL}/bets`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json().then(data => ({ ok: res.ok, data })))

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './ProfilePage.css';
+import { API_URL } from '../config.js';
 
 function ProfilePage() {
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:8000/profile', {
+        fetch(`${API_URL}/profile`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

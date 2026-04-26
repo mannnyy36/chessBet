@@ -1,0 +1,3 @@
+# Netlify config lives at the repo root: ../netlify.toml
+# This file exists only because the sandbox couldn't delete it.
+# Safe to remove manually.

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './TournamentPage.css';
+import { API_URL } from '../config.js';
 
 // Mirrors the server-side odds calculation in routes/bets.js so users see
 // the same odds they'll be charged at. Source of truth is still the server.
@@ -26,7 +27,7 @@ function TournamentPage() {
 
     useEffect(() => {
         const fetchTournament = async () => {
-            const response = await fetch(`http://localhost:8000/game/${id}`)
+            const response = await fetch(`${API_URL}/game/${id}`)
             const data = await response.json()
             setTournament(data.game)
             setLoading(false)
@@ -52,7 +53,7 @@ function TournamentPage() {
             const tourSlug = tournament.tour.slug
             const roundSlug = round.slug
             const response = await fetch(
-                `http://localhost:8000/round/${tourSlug}/${roundSlug}/${round.id}/games`
+                `${API_URL}/round/${tourSlug}/${roundSlug}/${round.id}/games`
             )
             const data = await response.json()
             if (!response.ok) {
@@ -175,7 +176,7 @@ function GameBetCard({ game, roundId, roundSlug, tourSlug, roundFinished }) {
         setMessage(null)
 
         try {
-            const response = await fetch('http://localhost:8000/bets', {
+            const response = await fetch(`${API_URL}/bets`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
